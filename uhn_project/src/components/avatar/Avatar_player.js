@@ -19,6 +19,7 @@ class Avatar_player extends Component {
         this.next=this.next.bind(this)
         console.log("d o w"+(new Date()).getDay())
         this.onfinsh=this.onfinsh.bind(this)
+        this.pause=false
         //this.load_data = this.load_data.bind(this)
     }
 
@@ -40,16 +41,25 @@ class Avatar_player extends Component {
         }
     }
     update_avtar(path){
-
+        const myHeaders = new Headers();
+        const token = localStorage.getItem("token");
+        myHeaders.append("Authorization", `Bearer ${token}`);
         console.log("avtar updated")
         let loader = new FBXLoader();
+        console.log("format")
+        console.log(this.props.format)
         if(this.props.format=='gltf'){
             loader = new GLTFLoader();
         }
+        loader.setRequestHeader(myHeaders)
+        console.log('path')
+        console.log(path)
         loader.load(
             path,
             (object) => {
                 console.log(this.scene.children)
+                console.log('obj')
+                console.log(object)
                 this.scene.remove(this.scene.children.filter(child => child !== this.camera && child !== this.pointLight)[0]);
                 object.scale.set(0.016, 0.016, 0.016);
                 object.position.set(0, -1.5, 0);
@@ -79,6 +89,9 @@ class Avatar_player extends Component {
     }
 
     animate = () => {
+        if(this.pause){
+            return 
+        }
         this.frameId = requestAnimationFrame(this.animate);
 
         // Update controls
@@ -134,7 +147,7 @@ class Avatar_player extends Component {
     }
     componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
-        if (this.props.index !== prevProps.index) {
+        if (this.props.path!=prevProps.path) {
             this.update_avtar(this.props.path)
         }
       }
@@ -142,7 +155,13 @@ class Avatar_player extends Component {
         cancelAnimationFrame(this.frameId);
         this.mount.removeChild(this.renderer.domElement);
     }
-
+    stop(){
+        this.pause=true
+    }
+    continue(){
+        this.pause=false
+        this.animate()
+    }
     render() {
         return (
             <div style={{width:"100%"}}>
@@ -150,6 +169,9 @@ class Avatar_player extends Component {
                 {this.state.index}/{this.props.total}
             </div>
             <div ref={mount => { this.mount = mount }} style={{width:"100%"}}/>
+            {this.pause?<button onClick={this.continue}>
+            continue
+            </button>:<button onClick={this.stop}> stop</button>}
             </div>
         );
     }

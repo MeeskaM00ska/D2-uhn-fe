@@ -38,7 +38,7 @@ function Menu() {
               <a href="/rehab">Rehab Program</a>
             </li>
             <li>
-              <a href="/video">Meeting</a>
+              <a href="/video">Avatar</a>
             </li>
             <li>
               <a href="/blog">Blog</a>
@@ -51,6 +51,9 @@ function Menu() {
             </li>
             <li>
               <a href="/contact">Contact us</a>
+            </li>
+            <li>
+              <a href="/">Login</a>
             </li>
           </ul>
           <button className="menu-close" onClick={handleCloseClick}>

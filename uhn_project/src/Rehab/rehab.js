@@ -11,42 +11,44 @@ import Agenda from "./agenda";
 const Rehab = () => {
   // const [datesToHighlightGreen, setDatesToHighlightGreen] = useState([]);
   // const [datesToHighlightRed, setDatesToHighlightRed] = useState([]);
+  
+  const [datesarray, setDatesArray] = useState([]);
+  const token = localStorage.getItem("token");
 
   // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get("http://localhost:5000/home/popup", {
-  //         headers: {
-  //           Authorization: "Bearer {token}",
-  //         },
-  //       });
-
-  //       if (response.data.success) {
-  //         const events = response.data.data;
-
-  //         const greenDates = [];
-  //         const redDates = [];
-
-  //         for (const event of events) {
-  //           if (event.meeting === null) {
-  //             greenDates.push(new Date(event.date));
-  //           } else {
-  //             redDates.push(new Date(event.date));
-  //           }
-  //         }
-
-  //         setDatesToHighlightGreen(greenDates);
-  //         setDatesToHighlightRed(redDates);
-  //       } else {
-  //         console.log(response.data.message);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   fetchData();
+  //   axios.get('http://localhost:5000/calendar/year', {
+  //     headers: { 'Authorization': `Bearer ${token}` }
+  //   })
+  //     .then(response => {
+  //       const data = response.data.data;
+  //       setDatesArray(data);
+  //       console.log(data);
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
   // }, []);
+
+
+  console.log(datesarray);
+  // const green = []
+
+  // for (const item of datesarray.exercise){
+  //   green.push(item.slice(0, 10));
+  // }
+
+  // setDatesToHighlightGreen(green);
+
+
+  // const red = []
+
+  // for (const item of datesarray.meetings){
+  //   red.push(item.slice(0, 10));
+  // }
+
+  // setDatesToHighlightGreen(green);
+
+  // setDatesToHighlightRed(red);
 
   const datesToHighlightGreen = [
     new Date("2023-03-02"),
@@ -79,7 +81,7 @@ const Rehab = () => {
         </div>
       </div>
       
-      {showmonthly ? <Calendar datesToHighlightGreen={datesToHighlightGreen} datesToHighlightRed={datesToHighlightRed} /> : <Agenda token={localStorage.token}/>}
+      {showmonthly ? <Calendar/> : <Agenda token={localStorage.token}/>}
       
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Register.css';
+import styles from './Register.module.css';
 import uhn_logo from "../uhn_logo.svg";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +26,11 @@ function Register() {
   const handleHelpClick = () => {
     navigate('/help');
   }
+
+  const handleGoBack = () => {
+    navigate('/');
+  };
+  
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -67,42 +72,35 @@ function Register() {
   };
 
   return (
-    <div className="register-container">
-      <div style={{ width: '500px', height: '500px' ,marginRight: '20px'}}>
-        <img src={uhn_logo} alt="Login" style={{ width: '100%', height: '100%' }}/>
+    <div className={styles.registerContainer}>
+      <div className={styles.logoContainer}>
+        <img src={uhn_logo} alt="Login" className={styles.uhnLogo} />
       </div>
-      <div style={{ position: 'absolute', top: '0', left: '0' }}>
-        <AiOutlineQuestion className="menu-button2" size={38} onClick = {handleHelpClick} />
+      <div className={styles.helpIcon}>
+        <AiOutlineQuestion className="menu-button2" size={38} onClick={handleHelpClick} />
       </div>
-      <form>
+      <form onSubmit={handleRegister}>
         <h1>Register</h1>
         <label>
           Email:
-          <input type="text" value={email} onChange={handleEmailChange} />
+          <input type="email" value={email} onChange={handleEmailChange} />
         </label>
-        <br />
         <label>
           Password:
-          <br>
-          </br>
           <input type="password" value={password} onChange={handlePasswordChange} />
         </label>
-        <br />
         <label>
           Confirm Password:
-          <br>
-          </br>
           <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
         </label>
-        <br />
-        <button type="submit" onClick={handleRegister}>Register</button>
+        <button type="submit">Register</button>
+        <button className={styles.goBackButton} onClick={handleGoBack}>Go Back</button>
       </form>
-      <div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </div>
+      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
     </div>
   );
 }
 
 export default Register;
+
 

@@ -1,0 +1,133 @@
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.logoContainer {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.uhnLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.helpIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+label {
+  display: block;
+  margin: 10px;
+  width: 100%;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  border-color: #2196f3;
+  outline: none;
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.5);
+}
+
+input::placeholder {
+  color: #999;
+}
+
+input:-ms-input-placeholder {
+  color: #999;
+}
+
+input::-ms-input-placeholder {
+  color: #999;
+}
+
+input[type="email"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #2196f3;
+}
+
+.goBackButton {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.goBackButton:hover {
+  background-color: #666;
+}
+
+.errorMessage {
+  color: red;
+  margin: 10px;
+  font-size: 14px;
+}
+
+
+
+
+  
