@@ -3,6 +3,7 @@ import styles from './Register.module.css';
 import uhn_logo from "../uhn_logo.svg";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { server_url } from '../global';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ function Register() {
       return;
     }
 
-    fetch('http://localhost:5000/account/signup', {
+    fetch(`${server_url}/account/signup`, {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: {

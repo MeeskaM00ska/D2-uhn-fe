@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DateDisplay from './formatDate';
 import {Button} from "react-bootstrap";
+import { server_url } from '../global';
 
 function HomePopUP() {
   const [exerciseData, setExerciseData] = useState(null);
@@ -20,7 +21,7 @@ function HomePopUP() {
   
 
   useEffect(() => {
-    axios.get('http://localhost:5000/popup', {
+    axios.get(`${server_url}/popup`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(response => {

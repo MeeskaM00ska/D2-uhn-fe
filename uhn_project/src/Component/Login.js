@@ -4,6 +4,7 @@ import uhn_logo from "../uhn_logo.svg";
 import { AiOutlineQuestion } from "react-icons/ai";
 import './Menu.css';
 import { useNavigate } from "react-router-dom";
+import { server_url } from '../global';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -26,7 +27,7 @@ function Login() {
       return;
     }
     
-    fetch('http://localhost:5000/account/signin', {
+    fetch(`${server_url}/account/signin`, {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { server_url } from '../global';
 import "./agenda.css";
 
 const Agenda = () =>{
@@ -7,7 +8,7 @@ const Agenda = () =>{
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`http://localhost:5000/calendar/day`, {
+      const response = await fetch(`${server_url}/calendar/day`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const responseData = await response.json();
